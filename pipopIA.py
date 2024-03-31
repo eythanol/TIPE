@@ -52,12 +52,12 @@ def nouv_score(grille, joueur, dernier_coup):
     cases_possibles = list(set(cases_dispo(grille)) & set(cases_potentielles))
 
     # donne un score aux cases formées si le dernier_coup le permet
-    cases_formées = []
+    cases_formees = []
     for (i, j) in cases_possibles:
         if traits_adjacents(grille, (i, j)) == [trait, trait, trait, trait]:
             grille[i][j] = joueur
-            cases_formées.append((i, j))
-    return cases_formées
+            cases_formees.append((i, j))
+    return cases_formees
 
 def decompte(grille, joueur=0):
     # renvoies le score de la grille / compte les points du joueur 1 ou du joueur 2 si demandé en mettant joueur = 1 ou -1
