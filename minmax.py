@@ -1,5 +1,5 @@
 from copy import deepcopy
-from structure import J1, decompte, coups_possibles, jouer, nouv_score
+from jeu import J1, decompte, coups_possibles, jouer, nouv_score
 
 
 def conversion(grille:list) -> tuple:
