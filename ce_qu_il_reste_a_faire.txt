@@ -2,4 +2,8 @@
 
 # Voir si l'on peut optimiser les algorithmes encore
 
+# Régler le problème où on peut recliquer sur des lignes déjà cliquées (ça va être relou)
+
+# Faciliter la manière de jouer un coup 
+
 # Faire des trucs jolis
