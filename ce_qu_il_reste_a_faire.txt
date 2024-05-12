@@ -1,0 +1,5 @@
+# Modifier interface_graphique.py pour éviter de recalculer les branches déjà calculés lors du parcours en profondeur
+
+# Voir si l'on peut optimiser les algorithmes encore
+
+# Faire des trucs jolis
