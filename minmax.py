@@ -1,13 +1,32 @@
 from copy import deepcopy
 from structure import J1, decompte, coups_possibles, jouer, nouv_score
 
+
+def conversion(grille:list) -> tuple:
+    """
+    grille : liste de liste qui constitue la grille de jeu
+
+    convertit la grille sous forme de tuple de tuples
+    """
+    N = len(grille)
+    return tuple(tuple(grille[i]) for i in range(N))
+
+
+graphe_partie = {} # stocke les coups déjà calculés
+
 def choix_coups(grille, joueur, niveau=1):
     coups_poss = coups_possibles(grille)
 
     # Cas d'arret
     if (len(coups_poss) == 0) or (niveau == 0):
         return decompte(grille), []
-    
+
+    grille_tuple = conversion(grille)
+
+    # Cas où le calcul est déjà fait, position connue
+    if grille_tuple in graphe_partie:
+        return graphe_partie[grille_tuple]
+        
     coup_choisi = {}
     for (i, j) in coups_poss:
         copie = deepcopy(grille)
@@ -38,5 +57,6 @@ def choix_coups(grille, joueur, niveau=1):
     else:
         score = min(coup_choisi.keys())
 
+    graphe_partie[grille_tuple] = (score, coup_choisi[score]) # une fois le calcul réalisé, on le stocke dans le graphe et on le réutilise en cas de besoin
 
     return score, coup_choisi[score]
