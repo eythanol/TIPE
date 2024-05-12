@@ -1,6 +1,4 @@
-# Modifier interface_graphique.py pour éviter de recalculer les branches déjà calculés lors du parcours en profondeur
-
-# Voir si l'on peut optimiser les algorithmes encore
+# Stocker les scores calculés par la fonction décompte
 
 # Régler le problème où on peut recliquer sur des lignes déjà cliquées (ça va être relou)
 
