@@ -1,6 +1,6 @@
 import tkinter as tk
 from minmax import choix_coups
-from structure import J1, J2, liste_cases, coups_possibles, decompte, jouer, nouv_score
+from jeu import J1, J2, liste_cases, coups_possibles, decompte, jouer, nouv_score
 
 niveau_ia = 3
 
