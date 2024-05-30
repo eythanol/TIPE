@@ -81,6 +81,8 @@ class App(tk.Frame):
     
         for t in self.traits:
             self.canv.tag_bind(self.traits[t], f'<Button-1>', lambda e, var=self.traits[t]: self.trace(var))
+            self.canv.tag_bind(self.traits[t], f"<Enter>", lambda e, var=self.traits[t]: self.dessus(var))
+            self.canv.tag_bind(self.traits[t], f"<Leave>", lambda e, var=self.traits[t]: self.pas_dessus(var))
 
         # points        
         cote = min(l, L)
@@ -102,6 +104,12 @@ class App(tk.Frame):
 
         self.compte.pack()
 
+    def dessus(self, trait):
+        self.canv.itemconfig(trait, fill='grey')
+
+    def pas_dessus(self, trait):
+        self.canv.itemconfig(trait, fill='white')
+        
     def trace(self, trait):
         # trace un trait
         self.canv.itemconfig(trait, fill='black')
@@ -112,6 +120,11 @@ class App(tk.Frame):
         position = traits_ij_list.index(trait)
         (i, j) = traits_list[position]
 
+        # Ne permet plus de rejouer ce coup
+        self.canv.tag_unbind(self.traits[(i, j)], f'<Button-1>')
+        self.canv.tag_unbind(self.traits[(i, j)], f'<Enter>')
+        self.canv.tag_unbind(self.traits[(i, j)], f'<Leave>')
+        
         # joue un coup dans la grille et procède au décompte des points
         score_precedant = decompte(self.grille)
 
